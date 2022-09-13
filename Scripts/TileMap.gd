@@ -23,6 +23,10 @@ func _input(event):
 		var tile_id = get_cellv(pos)
 		var tile_name = tile_set.tile_get_name(tile_id)
 		print("Clicked tile " + tile_name + " at " + str(pos))
-		if 'foundation' in tile_name:
-			set_cellv(pos, 3)
-
+		
+		
+		
+		#if 'foundation' in tile_name:
+		#	set_cellv(pos, 3)
+			
+	

@@ -1,10 +1,14 @@
 extends PathFollow2D
+class_name Baddie
 
 const cell_size = 64
 const movement_per_second = 1
 
 var baddie_name = to_string()
 var time_alive = 0
+
+# Counts the number of towers agrro'd onto this baddie
+var tower_aggros = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "PathFollow2D",
+"class": "Baddie",
+"language": "GDScript",
+"path": "res://Baddie.gd"
+} ]
+_global_script_class_icons={
+"Baddie": ""
+}
+
 [application]
 
 config/name="Jays TD"
