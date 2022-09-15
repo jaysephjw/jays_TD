@@ -1,11 +1,15 @@
-extends PathFollow2D
-class_name Baddie
+class_name Baddie extends PathFollow2D
+
 
 const cell_size = 64
 const movement_per_second = 1
+const cash_value = 2
 
-var baddie_name = to_string()
+onready var game: Game = get_node('/root/Game')
+onready var baddie_name = to_string()
+
 var time_alive = 0
+var hp = 6
 
 # Counts the number of towers agrro'd onto this baddie
 var tower_aggros = 0
@@ -24,10 +28,24 @@ func _physics_process(delta):
 	# If it's at/past the end of the path, destroy this node.
 	if unit_offset >= 1:
 		print(">>> " + baddie_name + " is free")
+		game.register_leak()
 		queue_free() # engine-speak for "GTFO"
 
-
 # Clicked on me!
-func _on_Area2D_input_event(viewport, event, shape_idx):
-	print("Mouse on Baddie " + baddie_name)
+func _on_Area2D_input_event(viewport, event: InputEvent, shape_idx):
+	if event is InputEventMouseButton and event.pressed:
+		print("Clicked on Baddie " + baddie_name)
 
+
+func _on_BaddieArea_area_entered(area):
+	if not area.is_in_group("shot"): return
+	# print('Youch!')
+	hp -= 1
+	area.queue_free()
+	
+	if hp <= 0:
+		print(baddie_name + ' is le Ded')
+		game.register_kill(cash_value)
+		queue_free()
+		
+		

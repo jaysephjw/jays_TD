@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/BaddieSpawner.gd" type="Script" id=1]
 [ext_resource path="res://Textures/dirt.svg" type="Texture" id=2]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=3]
-[ext_resource path="res://Textures/foundation.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Foundation.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Textures/mountain.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/TileMap.gd" type="Script" id=6]
 [ext_resource path="res://Textures/tower.png" type="Texture" id=7]
-[ext_resource path="res://Scenes/Tower.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -45,20 +44,6 @@ _data = {
 1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
-2/name = "foundation.png 2"
-2/texture = ExtResource( 4 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 0.23129, 0.765625, 0.200378, 1 )
-2/region = Rect2( 0, 0, 64, 64 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape_one_way = false
-2/shape_one_way_margin = 0.0
-2/shapes = [  ]
-2/z_index = 0
 3/name = "tower.png 3"
 3/texture = ExtResource( 7 )
 3/tex_offset = Vector2( 0, 0 )
@@ -87,7 +72,7 @@ curve = SubResource( 2 )
 script = ExtResource( 1 )
 
 [node name="BaddieSpawnerTimer" type="Timer" parent="Path/BaddieSpawner"]
-wait_time = 4.0
+wait_time = 2.0
 
 [node name="TileMap" type="TileMap" parent="."]
 show_behind_parent = true
@@ -102,10 +87,52 @@ format = 1
 tile_data = PoolIntArray( 65536, 1, 0, 65537, 2, 0, 65538, 2, 0, 65539, 1, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 196610, 0, 0, 196611, 2, 0, 262146, 0, 0, 262147, 1, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 1, 0, 393216, 1, 0, 393217, 2, 0, 393218, 2, 0, 393219, 1, 0 )
 script = ExtResource( 6 )
 
-[node name="Tower" parent="." instance=ExtResource( 8 )]
-position = Vector2( 163, 415 )
+[node name="Foundation" parent="." instance=ExtResource( 4 )]
+position = Vector2( 226, 223 )
 
-[node name="Tower2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 223, 225 )
+[node name="Foundation2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 158, 415 )
+
+[node name="Foundation3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 96, 416 )
+
+[node name="Foundation4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 159, 97 )
+
+[node name="Foundation5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 95, 97 )
+
+[node name="KillCounter" type="RichTextLabel" parent="."]
+modulate = Color( 0, 0.870588, 0.0745098, 1 )
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 107.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 48, 15 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.63
+text = "Kills: 0"
+
+[node name="KillCounter2" type="RichTextLabel" parent="."]
+modulate = Color( 1, 0.686275, 0.141176, 1 )
+margin_left = 11.0
+margin_top = 27.0
+margin_right = 106.0
+margin_bottom = 42.0
+rect_pivot_offset = Vector2( 28, 15 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.63
+text = "Cash: 0"
+
+[node name="KillCounter3" type="RichTextLabel" parent="."]
+modulate = Color( 0.917647, 0.0862745, 0, 1 )
+margin_left = 11.0
+margin_top = 43.0
+margin_right = 106.0
+margin_bottom = 58.0
+rect_pivot_offset = Vector2( 28, 15 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.63
+text = "Leaks: 0"
 
 [connection signal="timeout" from="Path/BaddieSpawner/BaddieSpawnerTimer" to="Path/BaddieSpawner" method="_on_BaddieSpawnerTimer_timeout"]

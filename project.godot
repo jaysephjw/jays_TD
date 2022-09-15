@@ -9,13 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Arrow",
+"language": "GDScript",
+"path": "res://Scenes/Arrow.gd"
+}, {
 "base": "PathFollow2D",
 "class": "Baddie",
 "language": "GDScript",
 "path": "res://Baddie.gd"
+}, {
+"base": "Node2D",
+"class": "Game",
+"language": "GDScript",
+"path": "res://Scripts/Game.gd"
+}, {
+"base": "Area2D",
+"class": "Tower",
+"language": "GDScript",
+"path": "res://Scripts/Tower.gd"
 } ]
 _global_script_class_icons={
-"Baddie": ""
+"Arrow": "",
+"Baddie": "",
+"Game": "",
+"Tower": ""
 }
 
 [application]
