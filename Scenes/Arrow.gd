@@ -7,34 +7,24 @@ var target_pos: Vector2
 var velocity: Vector2
 
 func set_target(target):
-	self.target = weakref(target)
+	# Use WeakRef: Don't keep target object alive in memory just because of us
+	self.target = weakref(target) 
 
 func _process(delta):
+	# If still alive, update the target_pos.
+	# If dead, we'll still have its pos from the previous frame.
 	if target.get_ref():
 		target_pos = target.get_ref().get_global_transform().origin
-		
-	if position != target_pos:
-		var vect: Vector2 = (target_pos - position)
-		velocity = vect.normalized() * speed
-		var increment = velocity * delta
-		if not target.get_ref():
-			
-			modulate = Color(0,0,0,.5)
-			if increment.length() > vect.length():
-				print('Done here (' + str(increment.length()) + ' ' + str(vect.length()))
-				queue_free() # we done here 
-		position += increment
-		rotation = velocity.angle()
-			
-	else:
-		# Reached target position. 
-		# If the target is still alive, our collision on it will cause 
-		# us to be free'd. 
-		# Otherwise, target is gone; free ourselves.
-		if not target.get_ref():
-			print('Freeing orphaned shot after reaching dest')
+	
+	# Move an increment closer to the last known target_pos
+	var vect: Vector2 = (target_pos - position)
+	velocity = vect.normalized() * speed
+	var increment = velocity * delta
+	position += increment
+	rotation = velocity.angle()
+	
+	# If we're within an increment, and the target has been free'd,
+	# free ourselves. Otherwise, the target should free us on collision.
+	if increment.length() > vect.length():
+		if not target.get_ref():	
 			queue_free()
-		
-	
-	
-	

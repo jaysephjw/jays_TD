@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/BaddieSpawner.gd" type="Script" id=1]
 [ext_resource path="res://Textures/dirt.svg" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Textures/mountain.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/TileMap.gd" type="Script" id=6]
 [ext_resource path="res://Textures/tower.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Counters.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/WavesPlan.gd" type="Script" id=9]
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -102,7 +104,10 @@ position = Vector2( 159, 97 )
 [node name="Foundation5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 95, 97 )
 
-[node name="KillCounter" type="RichTextLabel" parent="."]
+[node name="Counters" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="KillCounter" type="RichTextLabel" parent="Counters"]
 modulate = Color( 0, 0.870588, 0.0745098, 1 )
 margin_left = 12.0
 margin_top = 12.0
@@ -113,7 +118,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.63
 text = "Kills: 0"
 
-[node name="KillCounter2" type="RichTextLabel" parent="."]
+[node name="KillCounter2" type="RichTextLabel" parent="Counters"]
 modulate = Color( 1, 0.686275, 0.141176, 1 )
 margin_left = 11.0
 margin_top = 27.0
@@ -124,7 +129,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.63
 text = "Cash: 0"
 
-[node name="KillCounter3" type="RichTextLabel" parent="."]
+[node name="KillCounter3" type="RichTextLabel" parent="Counters"]
 modulate = Color( 0.917647, 0.0862745, 0, 1 )
 margin_left = 11.0
 margin_top = 43.0
@@ -134,5 +139,8 @@ rect_pivot_offset = Vector2( 28, 15 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.63
 text = "Leaks: 0"
+
+[node name="WavesPlan" type="Node2D" parent="."]
+script = ExtResource( 9 )
 
 [connection signal="timeout" from="Path/BaddieSpawner/BaddieSpawnerTimer" to="Path/BaddieSpawner" method="_on_BaddieSpawnerTimer_timeout"]

@@ -15,12 +15,12 @@ func _ready():
 
 
 func _on_Aggro_area_entered(area):
-	print('An area entered tower aggro ' + str(area))
+	#print('An area entered tower aggro ' + str(area))
 	if area.is_in_group("baddie_area"):
 		baddies.append(area.get_parent())
 
 
 func _on_Aggro_area_exited(area):
-	print('An area exited tower aggro ' + str(area))
+	#print('An area exited tower aggro ' + str(area))
 	if area.is_in_group("baddie_area"):
 		baddies.erase(area.get_parent())

@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://Baddie.gd"
 }, {
 "base": "Node2D",
+"class": "Counters",
+"language": "GDScript",
+"path": "res://Scripts/Counters.gd"
+}, {
+"base": "Node2D",
 "class": "Game",
 "language": "GDScript",
 "path": "res://Scripts/Game.gd"
@@ -28,12 +33,19 @@ _global_script_classes=[ {
 "class": "Tower",
 "language": "GDScript",
 "path": "res://Scripts/Tower.gd"
+}, {
+"base": "Node2D",
+"class": "WavesPlan",
+"language": "GDScript",
+"path": "res://Scripts/WavesPlan.gd"
 } ]
 _global_script_class_icons={
 "Arrow": "",
 "Baddie": "",
+"Counters": "",
 "Game": "",
-"Tower": ""
+"Tower": "",
+"WavesPlan": ""
 }
 
 [application]

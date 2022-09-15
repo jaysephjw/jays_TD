@@ -57,7 +57,7 @@ func _on_Aggro_area_exited(area):
 	_drop_aggro(area.get_parent())
 
 func _add_aggro(baddie: Baddie):
-	print('add aggro for ' + str(baddie))
+	#('add aggro for ' + str(baddie))
 	baddie.tower_aggros += 1
 	if baddie.tower_aggros == 1:
 		baddie.modulate = aggro_color
@@ -79,7 +79,7 @@ func _drop_aggro(baddie: Baddie):
 var _arrow = load('res://Scenes/Arrow.tscn')
 
 func _on_ShotTimer_timeout():
-	# print('timeout. target is ' + str(baddies) + ' baddies empty ' + str(baddies.empty()))
+	#print('timeout. target is ' + str(baddies) + ' baddies empty ' + str(baddies.empty()))
 	var target = get_target()
 	if not target:
 		return
@@ -87,4 +87,4 @@ func _on_ShotTimer_timeout():
 	arrow.position = get_global_position()
 	arrow.set_target(target)
 	self.get_parent().add_child(arrow)
-	# print('took shot')
+	#print('took shot')
