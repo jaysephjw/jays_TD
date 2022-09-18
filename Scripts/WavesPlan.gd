@@ -1,19 +1,20 @@
 extends Node2D
 class_name WavesPlan
 
-func make(count, hp, cash, speed):
+func make(count, hp, cash, speed, scale = 1.0):
 	return {
 		'count': count,
 		'hp': hp,
 		'cash': cash,
 		'speed': speed,
+		'scale': scale,
 	}
 	
 var waves = [
-	make(3,4,5,1.0),
-	make(3,6,5,.9), # heavy 
-	make(3,4,5,2), # fast
-	make(1,29,5,.4), # ultra heavy 
+	make(5 ,2 ,2 , 1.0 ,1.0), # normal
+	make(3 ,8 ,2 , .7  ,1.1), # heavy 
+	make(3 ,2 ,2 , 1.8 ,.80), # fast
+	make(1 ,33,2 , .40 ,1.4), # ultra heavy 
 ]
 
 var total = null

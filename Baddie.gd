@@ -3,7 +3,7 @@ class_name Baddie extends PathFollow2D
 
 const cell_size = 64
 var movement_per_second = 1
-var cash_value = 2
+var cash_value = 1
 var hp = 4
 
 onready var game: Game = get_node('/root/Game')

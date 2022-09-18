@@ -30,6 +30,7 @@ func spawn_baddie():
 	baddie.hp = config.hp
 	baddie.cash_value = config.cash
 	baddie.movement_per_second = config.speed
+	baddie.scale = Vector2(config.scale, config.scale)
 	
 	
 	get_parent().add_child(baddie)

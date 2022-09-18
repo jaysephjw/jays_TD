@@ -52,6 +52,8 @@ _global_script_class_icons={
 
 config/name="Jays TD"
 run/main_scene="res://Scenes/Game.tscn"
+boot_splash/image="res://Textures/splash.png"
+boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://icon.png"
 
 [gui]
